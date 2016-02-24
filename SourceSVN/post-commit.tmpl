@@ -3,15 +3,20 @@
 # Copyright (c) 2012 John Reese
 # Licensed under the MIT license
 
-REV="$2"
+# Set this properly
+REPO_LOCATION = file:///absolute/path/to/repository
+REV=$(svn log $REPO_LOCATION -r$2 -v --xml)
 
-URL="http://localhost/mantisbt/plugin.php?page=Source/checkin"
-PROJECT="Repository Name"
-API_KEY="xxxxxxxxxxxxxxxxxxxxxxxxxxx"
+# Set this properly
+URL="http:///mantis_address/plugin.php?page=Source/checkin"
+PROJECT="testSVN"
+# Set this properly
+API_KEY="XXXXXXXXXX"
 
-LOG_FILE=`mktemp /tmp/svn_${PROJECT}_${REV}_log.XXX`
+# Set this properly
+LOG_FILE=/absolute_path_to_log_file
 
-CURL=/usr/bin/curl
+# Set this properly
+CURL=/absolute_path_to_curl
 
 ${CURL} -d "repo_name=${PROJECT}" -d "data=${REV}" -d "api_key=${API_KEY}" ${URL} >> ${LOG_FILE}
-

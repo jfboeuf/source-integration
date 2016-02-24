@@ -191,18 +191,13 @@ class SourceSVNPlugin extends MantisSourcePlugin {
 
 	public function commit( $p_repo, $p_data ) {
 		if ( preg_match( '/(\d+)/', $p_data, $p_matches ) ) {
-			$svn = $this->svn_call( $p_repo );
-
-			$t_url = $p_repo->url;
-			$t_revision = $p_matches[1];
-			$t_svnlog_xml = shell_exec( "$svn log -v $t_url -r$t_revision --xml" );
 
 			if ( SourceChangeset::exists( $p_repo->id, $t_revision ) ) {
 				echo "Revision $t_revision already committed!\n";
 				return null;
 			}
 
-			return $this->process_svn_log_xml( $p_repo, $t_svnlog_xml );
+			return $this->process_svn_log_xml( $p_repo, $p_data );
 		}
 	}
 
