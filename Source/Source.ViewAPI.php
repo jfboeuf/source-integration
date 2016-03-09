@@ -68,23 +68,6 @@ function Source_View_Changesets( $p_changesets, $p_repos=null, $p_show_repos=tru
 		) ) ) );
 ?></td>
 </tr>
-
-		<?php foreach ( $t_changeset->files as $t_file ) { ?>
-<tr class="row-2">
-<td class="small mono" colspan="2"><?php echo string_display_line( $t_vcs->show_file( $t_repo, $t_changeset, $t_file ) ) ?></td>
-<td class="center" width="12%"><span class="small-links">
-		<?php
-		if ( $t_url = $t_vcs->url_diff( $t_repo, $t_changeset, $t_file ) ) {
-			print_bracket_link( $t_url, plugin_lang_get( 'diff', 'Source' ) );
-		}
-		if ( $t_url = $t_vcs->url_file( $t_repo, $t_changeset, $t_file ) ) {
-			print_bracket_link( $t_url, plugin_lang_get( 'file', 'Source' ) );
-		}
-		?>
-</span></td>
-</tr>
-		<?php } ?>
-<tr><td class="spacer"></td></tr>
 		<?php
 	}
 }
