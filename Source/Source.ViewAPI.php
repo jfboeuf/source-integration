@@ -33,7 +33,7 @@ function Source_View_Changesets( $p_changesets, $p_repos=null, $p_show_repos=tru
 		?>
 
 <tr class="row-1">
-<td class="category" width="25%" rowspan="<?php echo count( $t_changeset->files ) + 1 ?>">
+<td class="category" width="25%" rowspan="1">
 	<a name="changeset<?php echo $t_changeset->id ?>"><?php echo string_display(
 		( $p_show_repos ? $t_repo->name . ': ' : '' ) .
 		$t_vcs->show_changeset( $t_repo, $t_changeset )
